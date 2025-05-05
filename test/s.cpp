@@ -2,29 +2,34 @@
 using namespace std;
 
 int main() {
-    string input;
-    cout << "Enter a sentence: ";
-    getline(cin, input); // read full line including spaces
-
-    stringstream ss(input);
-    string word;
-    vector<string> wordss;
-
-    while (ss >> word) {
-        wordss.push_back(word);
-    }
-
-    // for(string s : wordss){
-    //     printf(s);
-    // }
-
-    for(int i=wordss.size()-1; i>=0; i--){
-        cout<<(wordss[i]);
-        if(i > 0){
-            cout<<" ";
+    string s = "race a car";
+    string ans = "";
+    for(char c: s){
+        if(c >= 'A' && c <= 'Z' || c>='a' && c<='z' || 
+            (c >= '0' && c <= '9')){
+            ans+=towlower(c);
         }
     }
-    
+    // cout<<ans<<endl;
+    int l = 0;
+    int r = ans.size()-1;
+    bool flag = true;
+    while(l<r){
+        if(ans[l] != ans[r]){
+            flag = false;
+        }
+        else{
+            l++;
+            r--;
+        }
+        
+    }
+    if(flag){
+        cout<<"palindirom";
+    }
+    else{
+        cout<<"no";
+    }
 
     return 0;
 }
